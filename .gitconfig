@@ -1,0 +1,8 @@
+[user]
+	name = Thierry Raeber
+	email = cyphics@protonmail.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status

@@ -1,0 +1,31 @@
+#!/bin/sh
+lock() {
+    exec $SCRIPTS/gambit/lock.sh sleep
+}
+case "$1" in
+    lock)
+	lock
+	;;
+    toggle-lock)
+	exec toggle-autolock.sh
+	;;
+    logout)
+	i3-msg exit
+	;;
+    suspend)
+	systemctl suspend
+	;;
+    hibernate)
+	pm-hibernate
+	;;
+    reboot)
+	reboot
+	;;
+    shutdown)
+	shutdown
+	;;
+    *)
+	echo "Usage: $0 {lock|logout|suspend|hibernate|reboot|shutdown}"
+	exit 2
+esac
+exit 0

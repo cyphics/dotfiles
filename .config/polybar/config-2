@@ -1,0 +1,377 @@
+[colors]
+background = #222
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #55
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/top]
+monitor = ${env:MONITOR}
+width = 100%
+height = 27
+radius = 0
+fixed-center = true
+bottom=false
+
+background = #272827
+foreground = #657b83
+
+line-size = 3
+line-color =
+
+border-size = 0
+border-color =
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = "Source Code Pro Semibold:size=10;1"
+;font-1 = "Font Awesome 5 Free:style=Solid:size=10;1"
+;font-2 = "Font Awesome 5 Brands:size=10;1"
+font-1 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:pixelsize=10;3"
+font-2 = "Font Awesome 5 Free Solid:pixelsize=10;3"
+font-3 = "Font Awesome 5 Brands:pixelsize=10;3"
+font-4 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=10;1"
+font-5 = "FontAwesome:style=Regular=10;1"
+modules-left = i3 xwindow
+modules-center = date
+modules-right =  powermenu
+
+tray-position = right
+;tray-padding = 4
+;wm-restack = i3
+tray-reparent = true
+;override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/bottom]
+monitor = ${env:MONITOR}
+width = 100%
+height = 27
+radius = 0
+fixed-center = true
+bottom=true
+
+background = #272827
+foreground = #657b83
+
+line-size = 3
+line-color =
+
+border-size = 0
+border-color =
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = "Source Code Pro Semibold:size=10;1"
+font-1 = "Font Awesome 5 Free:style=Solid:size=10;1"
+font-2 = "Font Awesome 5 Brands:size=10;1"
+
+modules-left = music volume
+modules-center =   networkspeedup eth networkspeeddown
+modules-right =  temperature filesystem-slash cpu memory
+
+tray-position = left
+;tray-padding =
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+label-mode-padding = 2
+label-mode-foreground = #657b83
+label-mode-background = #272827
+
+label-focused = %index%
+label-focused-background = #4E524F
+label-focused-foreground = #272827
+label-focused-padding = 2
+
+label-unfocused = %index%
+label-unfocused-background = #7E807E
+label-unfocused-foreground = #272827
+label-unfocused-padding = 2
+
+label-visible = %index%
+label-visible-background = #7E807E
+label-visible-foreground = #272827
+label-visible-padding = 2
+
+label-urgent = %index%
+label-urgent-background = #BA2922
+label-urgent-padding = 2
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+
+
+[module/eth]
+type = internal/network
+interface = eno1
+interval = 3.0
+
+format-connected-padding = 2
+format-connected-foreground = #272827
+format-connected-background = #7E807E
+format-connected-prefix = " "
+format-connected-prefix-foreground = #272827
+label-connected = %local_ip%
+
+format-disconnected =
+
+[module/networkspeedup]
+type = internal/network
+interface = eno1
+label-connected = "%upspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = #5b
+
+[module/networkspeeddown]
+type = internal/network
+interface = eno1
+label-connected = "%downspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = #5b
+
+
+[module/date]
+type = internal/date
+interval = 1
+
+date =
+date-alt = " %d-%m-%Y"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-foreground = #272827
+format-background = #7E807E
+format-padding = 2
+
+label = %date% %time%
+
+; [module/date]
+; type = internal/date
+; interval = 1
+
+; date = "%d%{F#92}%m%{F-}%{F#49}%y%{F-}"
+; date-alt = " %d"
+
+; time = "%H%{F#92}%M%{F-}%{F#49}%S%{F-}"
+; time-alt =  %H:%M
+
+; ;format-prefix = 
+; format-prefix-foreground = ${colors.foreground-alt}
+; format-underline = #0a6cf5
+
+; label = %date% %time%
+
+
+[module/powermenu]
+type = custom/menu
+
+label-open = 
+label-open-foreground = #ff5c56
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+menu-0-2 = log out
+menu-0-2-exec = menu-open-3
+menu-0-3 = 
+menu-0-3-exec = "~/.i3/i3lock-fancy-multimonitor/lock &"
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = shutdown now
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+menu-3-0 = log out
+menu-3-0-exec = i3-msg exit
+menu-3-1 = cancel
+menu-3-1-exec = menu-open-0
+
+{% include 'by_host/' + ansible_hostname + '/modules-def.j2' ignore missing %}
+
+{% include 'by_os/' + ansible_distribution|lower + '/modules-def.j2' ignore missing %}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format = <ramp-coreload>
+format-prefix =
+format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = #f90000
+label = %percentage%
+ramp-coreload-0 = %{F#5b}▁%{F-}
+ramp-coreload-1 = %{F#5b}▂%{F-}
+ramp-coreload-2 = %{F#5b}▃%{F-}
+ramp-coreload-3 = %{F#ff5c57}▄%{F-}
+ramp-coreload-4 = %{F#ff5c57}▅%{F-}
+ramp-coreload-5 = %{F#ff5c57}▆%{F-}
+ramp-coreload-6 = %{F#ff5c57}▇%{F-}
+ramp-coreload-7 = %{F#ff5c57}█%{F-}
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/volume]
+type = internal/alsa
+
+format-volume = <label-volume> <bar-volume>
+label-volume = ""
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = muted
+;label-muted-foreground = ${colors.foreground-alt}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #5af78e
+bar-volume-foreground-1 = #5af78e
+bar-volume-foreground-2 = #5af78e
+bar-volume-foreground-3 = #5af78e
+bar-volume-foreground-4 = #5af78e
+bar-volume-foreground-5 = #f3f99d
+bar-volume-foreground-6 = #ff5c57
+bar-volume-gradient = false
+bar-volume-indicator = │
+bar-volume-indicator-font = 2
+bar-volume-indicator-foreground = #ff
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/memory]
+type = internal/memory
+interval = 2
+format = <label> <bar-used>
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = #4bffdc
+label =
+bar-used-width = 30
+bar-used-foreground-0 = #5af78e
+bar-used-foreground-1 = #5af78e
+bar-used-foreground-2 = #f3f99d
+bar-used-foreground-3 = #ff5c57
+;bar-used-fill = ▐
+bar-used-fill = 
+bar-used-empty = 
+bar-used-empty-foreground = #444444
+bar-used-indicator =
+
+[module/filesystem-slash]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+label-mounted = "%{F#5b5b5b}%{F-} %percentage_used%%"
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[module/music]
+type = custom/script
+interval = 1
+label =  %output:0:30:%
+;format-prefix = " "
+format = <label>
+exec = python ~/.config/polybar/spotify_status.sh -f '{artist}: {song}'
+format-underline = #1db954
+; format-padding = 1
+; format-background = ${colors.foreground-alt}
+; format-underline = ${colors.foreground-alt}
+click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+click-right = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+click-middle = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+; type = custom/script
+; exec =
+; exec-if = pgrep -x spotify
+; interval = 5
+; label =  %output:0:30:%
+; format-padding = 1
+; format-background = ${colors.foreground-alt}
+; format-underline = ${colors.foreground-alt}
+; click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+
+[module/xwindow]
+type = internal/xwindow
+;label = "   %{F#5b5b5b}%{F-} %title:0:60:...%"
+;label=%title%
+format = <label>
+;format-background = #f00
+;format-foreground = #000
+format-padding = 4
+
+; Available tokens:
+;   %title%
+; Default: %title%
+label = %title%
+label-maxlen = 50
+
+; Used instead of label when there is no window title
+; Available tokens:
+;   None
+label-empty = Empty
+label-empty-foreground = #707880
