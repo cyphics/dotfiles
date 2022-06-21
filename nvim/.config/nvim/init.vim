@@ -1,4 +1,4 @@
-nnoremap <SPACE> <Nop>
+noremap <SPACE> <Nop>
 let mapleader = " "
 "" Reload vim config
 nnoremap <leader><S-r> :source $MYVIMRC<CR>
@@ -173,6 +173,8 @@ nnoremap <silent><C-e> :lua require("harpoon.ui").toggle_quick_menu()<CR>
 nnoremap <silent><leader>tc :lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>
 nnoremap <silent><leader>1 :lua require("harpoon.ui").nav_file(1)<CR>
 nnoremap <leader>m :! ./build.sh<CR>
+if has('linux')
+	map <M-m> : !build.sh <CR>
 	" nnoremap <leader>jr :! ./build.sh run<CR>
 	" nnoremap <leader>jt :! ./build.sh test<CR>
 elseif has('win64')
@@ -284,7 +286,7 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 "nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-nnoremap <silent> <C-f> :silent !tmux neww ~/config/tmux/tmux-sessionizer<CR>
+nnoremap <silent> <C-p> :silent !tmux neww tmux-sessionizer<CR>
 
 lua require("init")
 lua require("lsp-config")
