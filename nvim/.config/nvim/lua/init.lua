@@ -1,3 +1,4 @@
+require("nvim-autopairs").setup {}
 require('telescope').setup{
 	defaults = {
 		vimgrep_arguments = {
@@ -8,8 +9,6 @@ require('telescope').setup{
 			'--line-number',
 			'--column',
 			'--smart-case',
-			'-u',
-			'--hidden'
 		}
 	}
 }

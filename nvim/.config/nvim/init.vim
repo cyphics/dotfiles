@@ -85,6 +85,8 @@ nnoremap <C-H> <C-W><C-H>
 inoremap {<CR> {<CR>}<ESC>O
 "inoremap [<CR> [<CR>]<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
+"copy filepath of buffer
+nmap cp :let @" = expand("%:p")<cr> 
 
 " yank 
 call plug#begin(stdpath('config') . '/plugged')
@@ -155,7 +157,7 @@ call plug#end()
 "imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
 "smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
 
-nnoremap <leader>u :UndotreeShow<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>x :!chmod +x %<CR>
 "" Telescope
 " Find files using Telescope command-line sugar.
@@ -172,6 +174,9 @@ nnoremap <silent><leader>a :lua require("harpoon.mark").add_file()<CR>
 nnoremap <silent><C-e> :lua require("harpoon.ui").toggle_quick_menu()<CR>
 nnoremap <silent><leader>tc :lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>
 nnoremap <silent><leader>1 :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <silent><leader>2 :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <silent><leader>3 :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <silent><leader>4 :lua require("harpoon.ui").nav_file(4)<CR>
 nnoremap <leader>m :! ./build.sh<CR>
 if has('linux')
 	map <M-m> : !build.sh <CR>
@@ -187,8 +192,8 @@ omap <c-c> <esc>
 
 
 " Now apply macro with Q
-nnoremap Q @q
-vnoremap Q :norm @q<cr>
+" nnoremap Q @q
+" vnoremap Q :norm @q<cr>
 
 " Motion bindings so I can move around in insert
 " inoremap <C-k> <C-o>gk

@@ -140,6 +140,7 @@ compinit
 export PATH="$PATH:/home/cyphics/scripts"
 export PATH="$PATH:/home/cyphics/.local/bin"
 export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/go/bin"
 
 export EDITOR="nvim"
 export VISUAL="nvim"
