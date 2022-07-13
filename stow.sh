@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
 
 pushd ~/ownCloud/dotfiles
-STOW_FOLDERS="bin,i3,tmux,git,taskwarrior,nvim,zsh"
+STOW_FOLDERS="bin,i3,tmux,git,taskwarrior,nvim,zsh,polybar"
+mkdir -p ~/.config/nvim/plugged/
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
 	echo "f: $folder"

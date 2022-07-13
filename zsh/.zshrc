@@ -157,7 +157,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 bindkey -s ^p "tmux-sessionizer\n"
-export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0 # in WSL 2
+#export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0 # in WSL 2
 export LIBGL_ALWAYS_INDIRECT=1
 # export DISPLAY=$(ip route list default | awk '{print $3}'):0
 #export DISPLAY=IPv4_address_of_host:0
