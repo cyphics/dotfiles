@@ -1,19 +1,33 @@
 #!/usr/bin/bash
 find_param="-mindepth 1 -maxdepth 1 -type d"
-dir_list=("
+dir_list_rec=(
+	~/
+	~/work/ 
+	~/ownCloud/ 
+	~/ownCloud/dotfiles 
+	~/ownCloud/programming/projects/ 
+	~/ownCloud/programming/courses/ 
+)
+singles=(
 	/home/cyphics/Documents/admin/CV/moi/
-	")
+	)
 
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-	first=$(find ~/ ~/work/ ~/ownCloud/ ~/ownCloud/dotfiles ~/ownCloud/programming/projects/ ~/ownCloud/programming/courses/ $find_param)
-	list=("${first[@]}" "${dir_list[@]}")
-	selected=$(echo "${list[@]}" | fzf)
+	list_one=$(find ${dir_list_rec[@]} $find_param)
+	dir_list=("${list_one[@]}" "${singles[@]}")
+	selected=$(echo "${dir_list[@]}" | fzf)
 fi
 
 if [[ -z $selected ]]; then
     exit 0
+fi
+
+if [[ -z $TMUX ]] && [[ -n $(pgrep tmux) ]]; then
+	echo "tmux is running but detached."
+	tmux a
+	exit
 fi
 
 session_name=$(basename "$selected" | tr . _)
@@ -22,6 +36,7 @@ tmux_running=$(pgrep -x tmux)
 # If it's the first session
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s $session_name -c $selected
+	echo "create session"
     exit 0
 fi
 
