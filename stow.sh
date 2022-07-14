@@ -5,8 +5,7 @@ STOW_FOLDERS="bin,i3,tmux,git,taskwarrior,nvim,zsh,polybar"
 mkdir -p ~/.config/nvim/plugged/
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
-	echo "f: $folder"
+	echo "Linking content of $folder"
 	stow -Rvt ~ $folder
-	#stow -v $folder
 done
 popd

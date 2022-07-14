@@ -54,7 +54,7 @@ bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+e exec --no-startup-id dmenu_run
-bindsym $mod+d exec rofi -show combi 
+bindsym $mod+d exec rofi -combi-modi window#drun -show combi -modi combi -show-icons
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -298,4 +298,4 @@ exec $HOME/scripts/cyphics/set_wallpaper
 exec /usr/bin/protonmail-bridge --no-window
 exec /usr/bin/dunst
 exec "$HOME/scripts/swap_keyboard_layout.sh"
-exec ~/ownCloud/config/keyboard/kinesis_dvorak
+exec xmodmap ~/ownCloud/config/keyboard/kinesis_dvorak

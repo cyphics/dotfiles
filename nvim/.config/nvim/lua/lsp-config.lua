@@ -40,7 +40,9 @@ local function config(_config)
 		on_attach = on_attach,
 	}, _config or {})
 end
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'jsonls', 'bashls', 'ccls'}
+
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'jsonls', 'bashls', 'ccls', 'solang'}
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup (config())
 end
