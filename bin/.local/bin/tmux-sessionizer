@@ -5,6 +5,7 @@ dir_list_rec=(
 	~/work/ 
 	~/ownCloud/ 
 	~/ownCloud/dotfiles 
+	~/ownCloud/config 
 	~/ownCloud/programming/projects/ 
 	~/ownCloud/programming/courses/ 
 )

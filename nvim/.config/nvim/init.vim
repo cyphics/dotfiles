@@ -87,6 +87,8 @@ inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 "copy filepath of buffer
 nmap cp :let @" = expand("%:p")<cr> 
+" select freshly pasted text
+nnoremap gp `[v`]
 
 " yank 
 call plug#begin(stdpath('config') . '/plugged')
@@ -161,13 +163,14 @@ nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>x :!chmod +x %<CR>
 "" Telescope
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fH <cmd>Telescope help_tags<cr>
-nnoremap <leader>fo <cmd>Telescope oldfiles<cr>
-nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
-nnoremap <leader>fs <cmd>Telescope lsp_document_symbols<cr>
+nnoremap <leader>tf <cmd>Telescope find_files<cr>
+nnoremap <leader>ti <cmd>Telescope find_files hidden=true<cr>
+nnoremap <leader>tg <cmd>Telescope live_grep<cr>
+nnoremap <leader>tb <cmd>Telescope buffers<cr>
+nnoremap <leader>tH <cmd>Telescope help_tags<cr>
+nnoremap <leader>to <cmd>Telescope oldfiles<cr>
+nnoremap <leader>tr <cmd>Telescope lsp_references<cr>
+nnoremap <leader>ts <cmd>Telescope lsp_document_symbols<cr>
 
 
 nnoremap <silent><leader>a :lua require("harpoon.mark").add_file()<CR>
@@ -210,6 +213,9 @@ nnoremap J mzJ`z
 
 "This unsets the `last search pattern` register by hitting return
 nnoremap <CR> :noh<CR>
+" In the quickfix window, <CR> is used to jump to the error under the
+" cursor, so undefine the mapping there.
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 nnoremap <leader>e :Ex<CR>
 vnoremap <leader>p "_dP		" replace selection, but keep old yank
