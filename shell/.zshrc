@@ -147,6 +147,12 @@ export VISUAL="nvim"
 alias rm='rm -I --preserve-root'
 alias vim='nvim'
 alias fd='fdfind'
+alias px='ps auxf | grep -v grep | grep -i -e VSZ -e'
+alias df='pydf'
+alias hist='history | grep'
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
 
 #SSH
 alias mgn='ssh magneto-cyphics'

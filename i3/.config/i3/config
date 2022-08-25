@@ -292,7 +292,7 @@ exec eval $(pgp-agent --daemon)
 exec --no-startup-id /usr/bin/gnome-keyring-daemon
 exec "xset s off && xset -dpms"
 exec /usr/bin/redshift -O 4000
-exec xrandr --output DP-4 --auto --left-of HDMI-0
+#exec xrandr --output DP-2 --auto --left-of HDMI-1
 exec_always --no-startup-id ~/.config/polybar/bar_launcher.sh
 exec $HOME/scripts/cyphics/set_wallpaper
 exec /usr/bin/protonmail-bridge --no-window
