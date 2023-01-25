@@ -1,4 +1,4 @@
-tmux
+	tmux
 find
 stow
 ind
@@ -37,3 +37,4 @@ docker-compose
 chmod
 chown
 make
+opengl

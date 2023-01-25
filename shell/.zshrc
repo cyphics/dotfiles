@@ -80,36 +80,16 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:" # potentially dangerous, stop colorizing w+o folders (owncloud)
 
-# Lines configured by zsh-newuser-install
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -136,16 +116,18 @@ compinit
 # End of lines added by compinstall
 
 export PATH="$PATH:/home/cyphics/scripts"
+export PATH="$PATH:/home/cyphics/scripts/cyphics"
 export PATH="$PATH:/home/cyphics/.local/bin"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/go/bin"
-
-export EDITOR="nvim"
-export VISUAL="nvim"
+export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
+export PATH="$PATH:$HOME/ownCloud/work/scripts/"
 
 # aliases
 alias rm='rm -I --preserve-root'
 alias vim='nvim'
+alias sudo='sudo '
+alias svim='sudo nvim'
 alias fd='fdfind'
 alias px='ps auxf | grep -v grep | grep -i -e VSZ -e'
 alias df='pydf'
@@ -157,8 +139,6 @@ alias ln='ln -i'
 #SSH
 alias mgn='ssh magneto-cyphics'
 alias rmgn='ssh magneto-root'
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
 
 bindkey -s ^p "tmux-sessionizer\n"
 
@@ -171,3 +151,12 @@ export LIBGL_ALWAYS_INDIRECT=1
 # bindkey "^w" forward-word
 # bindkey "^e" emacs-forward-word
 # bindkey "^4" end-of-line
+export EDITOR="nvim"
+export VISUAL="nvim"
+export LC_ALL="en_GB.UTF-8"
+export LANG="en_GB.UTF-8"
+
+# Android
+export ANDROID_SDK=$HOME/Android/
+export ANDROID_SDK_ROOT=$HOME/Android/
+export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH

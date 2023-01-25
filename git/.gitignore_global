@@ -41,3 +41,9 @@ Thumbs.db
 # Other #
 #########
 node_modules/
+.vimspector.json
+.ccls-cache/
+cmake-build-debug/
+cmake-build-release/
+minor refactoring
+.idea/

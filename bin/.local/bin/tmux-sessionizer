@@ -18,7 +18,7 @@ if [[ $# -eq 1 ]]; then
 else
 	list_one=$(find ${dir_list_rec[@]} $find_param)
 	dir_list=("${list_one[@]}" "${singles[@]}")
-	selected=$(echo "${dir_list[@]}" | fzf)
+	selected=$(echo "${list_one[@]}" | fzf)
 fi
 
 if [[ -z $selected ]]; then
