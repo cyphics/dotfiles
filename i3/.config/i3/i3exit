@@ -16,7 +16,7 @@ case "$1" in
 	systemctl suspend
 	;;
     hibernate)
-	pm-hibernate
+	sudo pm-hibernate
 	;;
     reboot)
 	reboot

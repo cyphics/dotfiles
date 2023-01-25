@@ -17,7 +17,7 @@ font xft:URWGothic-Book 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 8
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -36,17 +36,17 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   +10%   && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 	 -10%   && $refresh_i3status
+bindsym XF86AudioMute 		 exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle && $refresh_i3status
+bindsym XF86AudioMicMute 	 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec ~/.local/bin/alacritty
+bindsym $mod+Return exec /usr/bin/alacritty
 
 # kill focused window
 #bindsym $mod+Shift+quotedbl kill
@@ -121,15 +121,15 @@ set $ws9 "9"
 set $ws10 "10"
 
 # workspaces
-set $ws1 1
-set $ws2 2
-set $ws3 3
-set $ws4 4
-set $ws5 5
-set $ws6 6
-set $ws7 7
-set $ws8 8
-set $ws9 9
+set $ws1  1
+set $ws2  2
+set $ws3  3
+set $ws4  4
+set $ws5  5
+set $ws6  6
+set $ws7  7
+set $ws8  8
+set $ws9  9
 set $ws10 10
 
 # switch to workspace
@@ -184,7 +184,7 @@ for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="InputOutput"] floating enable
-
+for_window [title="LearnOpenGL"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -201,11 +201,12 @@ set $mode_system (F8)lock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)ebo
 mode "$mode_system" {
 	#bindsym F8 exec ~/scripts/gambit/lock.sh sleep, mode "default"
     #bindsym s exec --no-startup-id "/home/cyphics/scripts/gambit/lock.sh sleep >  /home/cyphics/tmp.txt" , mode "default"
-    bindsym F8 exec --no-startup-id ~/.config/i3/i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id ~/.config/i3/i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id ~/.config/i3/i3exit logout, mode "default"
-    bindsym h exec --no-startup-id ~/.config/i3/i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id ~/.config/i3/i3exit reboot, mode "default"
+    bindsym F8 exec --no-startup-id ~/.config/i3/i3exit suspend, 	 mode "default"
+    bindsym u  exec --no-startup-id ~/.config/i3/i3exit switch_user, mode "default"
+    bindsym e  exec --no-startup-id ~/.config/i3/i3exit logout, 	 mode "default"
+    bindsym h  exec --no-startup-id ~/.config/i3/i3exit hibernate, 	 mode "default"
+    bindsym r  exec --no-startup-id ~/.config/i3/i3exit reboot,  	 mode "default"
+
     bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -221,16 +222,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym t resize grow height 10 px or 10 ppt
-        bindsym n resize shrink height 10 px or 10 ppt
-        bindsym s resize grow width 10 px or 10 ppt
+        bindsym l resize shrink width  10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym k resize grow   height 10 px or 10 ppt
+        bindsym h resize grow   width  10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left  resize shrink width  10 px or 10 ppt
+        bindsym Up    resize shrink height 10 px or 10 ppt
+        bindsym Down  resize grow   height 10 px or 10 ppt
+        bindsym Right resize grow   width  10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -259,7 +260,7 @@ client.background       #ffffff
 #bindsym F4 exec "$HOME/scripts/swap_keyboard_layout.sh kinesis"
 
 ## Music
-#bindsym F11 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 #bindsym F12 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 #bindsym F10 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 #bindsym control+$alt+Tab exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause && $HOME/scripts/volume toggle"
@@ -267,35 +268,35 @@ client.background       #ffffff
 bindsym $mod+control+Return exec "$HOME/scripts/cyphics/i3_open.sh chrome"
 bindsym $mod+control+e exec "$HOME/scripts/cyphics/i3_open.sh emacs"
 bindsym $mod+control+t exec "$HOME/scripts/cyphics/i3_open.sh thunderbird"
-#bindsym $mod+control+h exec "$HOME/scripts/cyphics/i3_open.sh thunar"
+bindsym $mod+control+f exec "$HOME/scripts/cyphics/i3_open.sh thunar"
 bindsym $mod+control+i exec "$HOME/scripts/cyphics/i3_open.sh irc"
 bindsym $mod+control+p exec "$HOME/scripts/cyphics/i3_open.sh pavucontrol"
 bindsym --release Print exec "/usr/bin/scrot -s $HOME/ownCloud/Images/Screenshots/'%F_%H-%M-%S_scrot.png'"
 bindsym --release Shift+Print exec "/usr/bin/scrot $HOME/ownCloud/Images/Screenshots/'%F_%H-%M-%S_scrot.png'"
 
-bindsym $mod+p exec "$HOME/ownCloud/sooon/projects/projects_selector.sh"
+bindsym $mod+p exec "$HOME/ownCloud/work/scripts/projects_selector.sh"
 bindsym $mod+Shift+t exec "$HOME/scripts/task_selector.sh"
 
 focus_follows_mouse yes
 
 
 ### STARTUP
-# exec setxkbmap 'ch(fr)' -option ctrl:nocaps
+exec setxkbmap 'us' -option ctrl:swapcaps
 # exec "$HOME/scripts/swap_keyboard_layout.sh"
 # exec --no-startup-id blueman-applet
 # exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 # exec /usr/bin/synapse -s
 # exec nvidia-settings --assign CurrentMetaMode="DPY-2: nvidia-auto-select +0+0 {ForceCompositionPipeline=On}, DPY-6: nvidia-auto-select +1920+0 {ForceCompositionPipeline=On}"
+# exec --no-startup-id setxkbmap -layout 'dvorak' 
 exec /usr/bin/owncloud
-exec setxkbmap 'ch(fr)' 
 exec eval $(pgp-agent --daemon)
 exec --no-startup-id /usr/bin/gnome-keyring-daemon
-exec "xset s off && xset -dpms"
+#exec "xset s off && xset -dpms"
 exec /usr/bin/redshift -O 4000
-#exec xrandr --output DP-2 --auto --left-of HDMI-1
+exec xrandr --output DP-4 --auto --left-of HDMI-0
 exec_always --no-startup-id ~/.config/polybar/bar_launcher.sh
 exec $HOME/scripts/cyphics/set_wallpaper
 exec /usr/bin/protonmail-bridge --no-window
 exec /usr/bin/dunst
-exec "$HOME/scripts/swap_keyboard_layout.sh"
-exec xmodmap ~/ownCloud/config/keyboard/kinesis_dvorak
+#exec "$HOME/scripts/swap_keyboard_layout.sh"
+exec --no-startup-id "sh -c 'sleep 2; xmodmap ~/ownCloud/config/keyboard/standard_us'"
