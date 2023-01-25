@@ -4,6 +4,7 @@ let mapleader = " "
 nnoremap <leader><S-r> :source $MYVIMRC<CR>
 
 syntax enable
+" let g:chromatica#enable_at_startup=1 " better c/c++ syntax
 filetype plugin indent on 
 set nocompatible      	" use vim-defaults instead of vi-defaults (easier, more user friendly)
 set nowrap              " dont wrap lines
@@ -16,6 +17,7 @@ set cindent
 set smarttab            " smart tab handling for indenting
 set history=50          " keep 50 lines of command history
 set relativenumber
+set number
 set nu rnu
 set tabstop=4			" show existing tab with 4 spaces width
 set shiftwidth=4 		" when indenting with '>', use 4 spaces width
@@ -35,9 +37,12 @@ set exrc 				" Allows to have a .vimrc file specific for each project
 set cmdheight=2 		" Give more space for displaying messages.
 let g:autoformat_remove_trailing_spaces = 0
 
+" let g:indentLine_char = '¦'
+
+
 
 "" Customize colors
-set t_Co=256
+set t_Co=25
 set termguicolors
 set background=dark
 autocmd vimenter * ++nested colorscheme gruvbox
@@ -61,7 +66,12 @@ if has('unix')
 endif
 set statusline+=\
 
-" Navigation
+" NAVIGATION
+" Remap beginning/end of line motions
+nnoremap <c-a> ^
+onoremap <c-a> ^
+nnoremap <c-e> $
+onoremap <c-e> $
 
 " Use backspace to swap last buffer
 nnoremap <bs> <c-^>
@@ -75,6 +85,14 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+" Goto end/beginning
+" nmap \ <END>
+" nmap <C-\> ^
+"So I can move around in insert
+cnoremap <C-h> <Left>
+cnoremap <C-j> <Down>
+cnoremap <C-k> <Up>
+cnoremap <C-l> <Right>
 
 "" Auto close braces/parentheses
 "inoremap " ""<left>
@@ -82,13 +100,14 @@ nnoremap <C-H> <C-W><C-H>
 "inoremap ( ()<left>
 "inoremap [ []<left>
 "inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
+" inoremap {<CR> {<CR>}<ESC>O
 "inoremap [<CR> [<CR>]<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+" inoremap {;<CR> {<CR>};<ESC>O
 "copy filepath of buffer
 nmap cp :let @" = expand("%:p")<cr> 
 " select freshly pasted text
 nnoremap gp `[v`]
+nnoremap <leader>{ 0f}C}<ESC>%^yt{$%A // <ESC>p
 
 " yank 
 call plug#begin(stdpath('config') . '/plugged')
@@ -103,7 +122,7 @@ Plug 'mbbill/undotree'
 "Plug 'dbeniamine/cheat.sh-vim'
 "Plug 'vimwiki/vimwiki'
 
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
@@ -118,26 +137,33 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-commentary' "use gcc to comment
 Plug 'lervag/vimtex'
 Plug 'fatih/vim-go'
-Plug 'tomlion/vim-solidity'
+"Plug 'tomlion/vim-solidity'
 Plug 'mattn/vim-goimports'
-"Plug 'honza/vim-snippets'
 Plug 'chrisbra/csv.vim'
 Plug 'preservim/nerdtree'
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
+" Plug 'sheerun/vim-polyglot'
+
 " LSP
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig' 
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
-Plug 'onsails/lspkind-nvim'
-" Snippets
-Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'onsails/lspkind-nvim'
 Plug 'rafamadriz/friendly-snippets'
-Plug 'windwp/nvim-autopairs'
+Plug 'L3MON4D3/LuaSnip'
+" Plug 'arakashic/chromatica.nvim'
+" Plug 'octol/vim-cpp-enhanced-highlight'
+
+
+"Plug 'windwp/nvim-autopairs'
 " Debugging
 Plug 'mfussenegger/nvim-dap'
 Plug 'leoluz/nvim-dap-go'
@@ -146,35 +172,22 @@ Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'nvim-telescope/telescope-dap.nvim'
 call plug#end()
 
-"" press <Tab> to expand or jump in a snippet. These can also be mapped separately
-"" via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
-"imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
-"" -1 for jumping backwards.
-"inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
-"
-"snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
-"snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
-"
-"" For changing choices in choiceNodes (not strictly necessary for a basic setup).
-"imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
-"smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
-
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>x :!chmod +x %<CR>
 "" Telescope
 " Find files using Telescope command-line sugar.
-nnoremap <leader>tf <cmd>Telescope find_files<cr>
-nnoremap <leader>ti <cmd>Telescope find_files hidden=true<cr>
-nnoremap <leader>tg <cmd>Telescope live_grep<cr>
-nnoremap <leader>tb <cmd>Telescope buffers<cr>
-nnoremap <leader>tH <cmd>Telescope help_tags<cr>
-nnoremap <leader>to <cmd>Telescope oldfiles<cr>
-nnoremap <leader>tr <cmd>Telescope lsp_references<cr>
-nnoremap <leader>ts <cmd>Telescope lsp_document_symbols<cr>
+nnoremap <leader>pf <cmd>Telescope find_files<cr>
+nnoremap <leader>ph <cmd>Telescope find_files hidden=true<cr>
+nnoremap <leader>pg <cmd>Telescope live_grep<cr>
+nnoremap <leader>pb <cmd>Telescope buffers<cr>
+nnoremap <leader>pH <cmd>Telescope help_tags<cr>
+nnoremap <leader>po <cmd>Telescope oldfiles<cr>
+nnoremap <leader>pr <cmd>Telescope lsp_references<cr>
+nnoremap <leader>ps <cmd>Telescope lsp_document_symbols<cr>
 
 
 nnoremap <silent><leader>a :lua require("harpoon.mark").add_file()<CR>
-nnoremap <silent><C-e> :lua require("harpoon.ui").toggle_quick_menu()<CR>
+"nnoremap <silent><C-e> :lua require("harpoon.ui").toggle_quick_menu()<CR>
 nnoremap <silent><leader>tc :lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>
 nnoremap <silent><leader>1 :lua require("harpoon.ui").nav_file(1)<CR>
 nnoremap <silent><leader>2 :lua require("harpoon.ui").nav_file(2)<CR>
@@ -242,20 +255,9 @@ let g:go_fmt_command = 'goimports'
 
 
 "" LaTeX
-let g:vimtex_view_method = 'zathura'
+" let g:vimtex_view_method = 'zathura'
 let g:vimtex_view_general_viewer = 'evince'
-
-"" Snippets
-"ActivateAddons vim-snippets snipmate
-" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
-" - https://github.com/Valloric/YouCompleteMe
-" - https://github.com/nvim-lua/completion-nvim
-"let g:UltiSnipsExpandTrigger="<c-s>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-"" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
-
+let g:tex_conceal = 0
 " Make .ejs files be considered html files
 au BufNewFile,BufRead *.ejs set filetype=html
 
@@ -268,7 +270,7 @@ endfun
 
 "" Debugging
 let g:vimspector_enable_mappings = 'HUMAN'
-"nnoremap <leader>m :MaximizerToggle!<CR>
+nnoremap <leader>f :MaximizerToggle!<CR>
 nnoremap <leader>dd : call vimspector#Launch()<CR>
 nnoremap <leader>de : call vimspector#Reset()<CR>
 nnoremap <leader>dr : call vimspector#Restart()<CR>
@@ -293,10 +295,10 @@ nnoremap <leader>dl <Plug>VimspectorStepOut
 " ***************************
 " 		NERDTree
 " ***************************
-nnoremap <leader>n :NERDTreeFocus<CR>
-"nnoremap <C-n> :NERDTree<CR>
+"nnoremap <leader>n :NERDTreeFocus<CR>
+""nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+"nnoremap <C-f> :NERDTreeFind<CR>
 nnoremap <silent> <C-p> :silent !tmux neww tmux-sessionizer<CR>
 
 lua require("init")

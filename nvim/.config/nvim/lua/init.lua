@@ -1,4 +1,4 @@
-require("nvim-autopairs").setup {}
+-- require("nvim-autopairs").setup {}
 require('telescope').setup{
 	defaults = {
 		vimgrep_arguments = {
