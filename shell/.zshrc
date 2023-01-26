@@ -85,8 +85,10 @@ source $ZSH/oh-my-zsh.sh
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh 
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh 
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh 
+[ -f /usr/share/doc/fzf/examples/completion.zsh ]   && source /usr/share/doc/fzf/examples/completion.zsh 
 
 export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:" # potentially dangerous, stop colorizing w+o folders (owncloud)
 
@@ -161,4 +163,3 @@ export ANDROID_SDK=$HOME/Android/
 export ANDROID_SDK_ROOT=$HOME/Android/
 export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
