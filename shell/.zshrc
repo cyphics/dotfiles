@@ -160,3 +160,5 @@ export LANG="en_GB.UTF-8"
 export ANDROID_SDK=$HOME/Android/
 export ANDROID_SDK_ROOT=$HOME/Android/
 export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
