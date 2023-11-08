@@ -171,6 +171,7 @@ Plug 'leoluz/nvim-dap-go'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'nvim-telescope/telescope-dap.nvim'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 nnoremap <leader>u :UndotreeToggle<CR>
