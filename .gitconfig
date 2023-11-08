@@ -1,0 +1,28 @@
+[user]
+	name = Thierry Raeber
+	email = cyphics@protonmail.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+[core]
+	excludesfile = /home/cyphics/.gitignore_global
+	autocrlf = input
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[color "status"]
+  changed = yellow
+  added = green
+  untracked = red
+[init]
+	defaultBranch = main
+[oh-my-zsh]
+	hide-status = 1
+	hide-dirty = 1
+[credential "https://github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+

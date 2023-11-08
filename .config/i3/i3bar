@@ -1,0 +1,79 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+
+# Update interval in seconds
+update_interval 2.0
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Shortens units to a single character (kiB->k, GiB->G, etc.). Default is off.
+short_units yes
+
+# How strict should if_up be when testing an interface for being up?
+# The value is one of up, link or address, to check for the interface
+# being solely up, being up and having link or being up, having link
+# and an assigned IP address.
+if_up_strictness address
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+# use_spacer should have an argument of left, right, or none
+#use_spacer left
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+pad_percents 3
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+# template {"full_text": "", "color":"\#"},
+#{"full_text": "/ ${fs_used_perc /}%", "color":"\#dfaf8f"},
+#{"full_text": "/home  ${fs_used_perc /home}%", "color":"\#efef8f"},
+
+# Stuff after 'TEXT' will be formatted on screen
+
+TEXT
+[
+
+## Current application
+{"full_text": "${exec xprop -id $(xdotool getactivewindow) | grep 'WM_CLASS(STRING)' | cut -d'"' -f2}", "separator":false, "separator_block_width":270, "color":"\#999999"},
+
+#DISK
+{"full_text":"${fs_used /}/${fs_size /}", "color":"${if_match ${fs_used_perc /} < 33}\#7f9f7f${else}${if_match ${fs_used_perc /} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}", "separator_block_width":20},
+
+# NETWORK
+${if_up eno1}\
+{"full_text": "", "separator": false, "separator_block_width":5},\
+{"full_text": "${wireless_essid eno1}", "separator":false, "separator_block_width":3, "color":"\#dca3a3"},\
+{"full_text": "${addr eno1}", "color":"\#83b3a3", "separator":false, "separator_block_width":1},
+{"full_text": "${upspeedf eno1}", "color":"\#de4940", "separator":false, "separator_block_width":2, "min_width":65, "align":"right"},\
+{"full_text": "", "separator":false, "separator_block_width":10},\
+{"full_text": "${downspeedf eno1}", "color":"\#38f284", "separator":false, "separator_block_width":5, "min_width":6, "min_width":65, "align":"right"},\
+{"full_text": ""},\
+
+
+# SYSTEM
+{"full_text": "", "separator": false, "separator_block_width":3},
+{"full_text": "${memperc}%", "min_width":"000%", "separator": false, "separator_block_width":3, "color":"${if_match ${memperc} < 33}\#7f9f7f${else}${if_match ${memperc} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
+#{"full_text": "${mem}/${memmax}", "color":"\#83b3a3", "separator": false},
+
+{"full_text": "", "separator": false, "separator_block_width":5},
+{"full_text": "${cpu}%", "min_width":"000%", "color":"${if_match ${cpu} < 33}\#7f9f7f${else}${if_match ${cpu} > 66}\#de4940${else}\#c3bf9f${endif}${endif}"},
+
+
+# MUSIC
+{"full_text": "", "separator": false, "separator_block_width":3},
+{"full_text":"${if_match "${exec amixer -D pulse get Master | tail -n 1 | cut -d ' ' -f 8}" == "[off]"} mute ${else}${exec amixer -D pulse get Master | tail -n 1 | cut -d ' ' -f 7 | cut -d '[' -f 2 | cut -d ']' -f 1}$endif","color": "${if_match "${exec amixer -D pulse get Master | tail -n 1 | cut -b 38-41 | sed -e 's/\[//g' -e 's/\]//g'}" == "off"} de4940,${else}\#c3bf9fm,$endif"},
+{"full_text": "", "separator": false},
+{"full_text": "${time %d.%m.%Y}", "separator": false, "separator_block_width":3, "color":"\#ffcfaf"},
+{"full_text": " - ", "separator": false},
+{"full_text": "${time %Hh%M %P}"},
+
+{"full_text": "${exec rhythmbox-client --no-start --no-present --print-playing}", "color":"\#999999"}
+
+],
