@@ -166,7 +166,7 @@ export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
 # rust
 source "$HOME/.cargo/env"
 
-source ~/.shell/common
+source ~/.config/shell/common
 
 dot-add() {
   git --git-dir="$HOME/.dotfiles" add -f $@
