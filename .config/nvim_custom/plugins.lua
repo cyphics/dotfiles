@@ -6,7 +6,19 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      ensure_installed = {"html", "bash", "rust", "javascript", "typescript", "tsx", "json", "c", "lua", "vim"}
+      ensure_installed = {
+        "html",
+        "bash",
+        "rust",
+        "javascript",
+        "typescript",
+        "tsx",
+        "json",
+        "c",
+        "lua",
+        "vim",
+        "markdown"
+      }
     }
   },
   {
