@@ -1,4 +1,7 @@
-# Clone git repo
+# NvChad repo must be cloned before my dotfiles repo so it's empty
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
+
+# Clone dotfiles repo
 git clone --bare https://github.com/cyphics/dotfiles.git $HOME/.dotfiles && source ~/.zshrc 
 
 # Shell
