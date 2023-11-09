@@ -167,3 +167,11 @@ export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
 source "$HOME/.cargo/env"
 
 source ~/.shell/common
+
+dot-add() {
+  git --git-dir="$HOME/.dotfiles" add -f $@
+}
+dot-untrack() {
+  git --git-dir="$HOME/.dotfiles" rm --cached $@
+}
+
