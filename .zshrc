@@ -164,7 +164,9 @@ export ANDROID_SDK_ROOT=$HOME/Android/
 export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
 
 # rust
-source "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+  source "$HOME/.cargo/env"
+fi
 
 source ~/.config/shell/common
 
