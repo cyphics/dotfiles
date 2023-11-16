@@ -169,4 +169,6 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 source ~/.config/shell/common
-
+if [ -f ~/.zshrc_addition ]; then
+  source ~/.zshrc_addition
+fi
