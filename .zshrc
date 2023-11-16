@@ -168,10 +168,3 @@ source "$HOME/.cargo/env"
 
 source ~/.config/shell/common
 
-dot-add() {
-  git --git-dir="$HOME/.dotfiles" add -f $@
-}
-dot-untrack() {
-  git --git-dir="$HOME/.dotfiles" rm --cached $@
-}
-
