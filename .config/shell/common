@@ -11,3 +11,5 @@ alias dot-remove='git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" rm --cache
 alias vm="fd --type f --hidden --exclude .git | fzf-tmux -p | xargs nvim"
 
 alias tw="task next +work"
+export RUSTC_WRAPPER=/home/cyphics/.cargo/bin/sccache
+
