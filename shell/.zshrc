@@ -117,6 +117,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+setopt localoptions rmstarsilent # Stop asking for confirmation when rm *
+
 export PATH="$PATH:/home/cyphics/scripts"
 export PATH="$PATH:/home/cyphics/scripts/cyphics"
 export PATH="$PATH:/home/cyphics/.local/bin"
@@ -130,7 +132,7 @@ alias rm='rm -I --preserve-root'
 alias vim='nvim'
 alias sudo='sudo '
 alias svim='sudo nvim'
-alias fd='fdfind'
+#alias fd='fdfind'
 alias px='ps auxf | grep -v grep | grep -i -e VSZ -e'
 alias df='pydf'
 alias hist='history | grep'
@@ -142,7 +144,7 @@ alias ln='ln -i'
 alias mgn='ssh magneto-cyphics'
 alias rmgn='ssh magneto-root'
 
-bindkey -s ^p "tmux-sessionizer\n"
+#bindkey -s ^f "tmux-sessionizer\n"
 
 export LIBGL_ALWAYS_INDIRECT=1
 # export DISPLAY=$(ip route list default | awk '{print $3}'):0
@@ -163,3 +165,5 @@ export ANDROID_SDK=$HOME/Android/
 export ANDROID_SDK_ROOT=$HOME/Android/
 export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
 
+# Handmade hero
+export PATH="$PATH:/home/cyphics/handmade/ctime"

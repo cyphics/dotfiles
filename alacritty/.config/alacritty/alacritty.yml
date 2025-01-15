@@ -1,13 +1,14 @@
 font:
   size: 11.0
   normal:
-     family: dejavu sans mono
+     family: DejaVu Serif 
+     style: Regular
        #family: Inconsolata Sans Mono
 # Cursor
 cursor:
   style:
     blinking: Always
-    blink_interval: 500
+  blink_interval: 500
 
 schemes:
   gruvbox: &gruvbox

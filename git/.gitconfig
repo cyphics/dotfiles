@@ -13,6 +13,7 @@
 	branch = auto
 [core]
 	excludesfile = /home/cyphics/.gitignore_global
+	autocrlf = input
 #[http]
 #	sslCAInfo = /etc/ssl/certs/_.cyphix.org.crt
 [color "status"]
@@ -22,3 +23,9 @@
 	defaultBranch = main
 [pull]
 	rebase = false
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
