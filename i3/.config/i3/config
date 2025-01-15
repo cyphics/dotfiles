@@ -265,6 +265,10 @@ bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer
 #bindsym F10 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 #bindsym control+$alt+Tab exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause && $HOME/scripts/volume toggle"
 
+## Brightness
+bindsym XF86MonBrightnessDown exec "sudo $HOME/scripts/gambit/brightness down"
+bindsym XF86MonBrightnessUp exec "sudo $HOME/scripts/gambit/brightness up"
+
 bindsym $mod+control+Return exec "$HOME/scripts/cyphics/i3_open.sh chrome"
 bindsym $mod+control+e exec "$HOME/scripts/cyphics/i3_open.sh emacs"
 bindsym $mod+control+t exec "$HOME/scripts/cyphics/i3_open.sh thunderbird"

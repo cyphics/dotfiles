@@ -1,7 +1,4 @@
-	tmux
 find
-stow
-ind
 man
 tldr
 sed
@@ -34,7 +31,7 @@ git-commit
 git-rebase
 docker
 docker-compose
+stow
 chmod
 chown
 make
-opengl

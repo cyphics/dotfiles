@@ -1,24 +1,24 @@
 [user]
-	name = Thierry Raeber
+	name = cyphics
 	email = cyphics@protonmail.com
 [alias]
-	co = checkout
-	br = branch
-	ci = commit
 	st = status
-[core]
-	excludesfile = /home/cyphics/.gitignore_global
-	autocrlf = input
+	ci = commit
+	co = checkout
+[push]
+	default = simple
 [color]
 	diff = auto
 	status = auto
 	branch = auto
+[core]
+	excludesfile = /home/cyphics/.gitignore_global
+#[http]
+#	sslCAInfo = /etc/ssl/certs/_.cyphix.org.crt
 [color "status"]
-  changed = yellow
-  added = green
-  untracked = red
+	changed = red
 [init]
+	templatedir = /home/cyphics/config/git-templates
 	defaultBranch = main
-[oh-my-zsh]
-	hide-status = 1
-	hide-dirty = 1
+[pull]
+	rebase = false
