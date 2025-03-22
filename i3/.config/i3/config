@@ -195,12 +195,12 @@ bindsym $mod+Shift+C reload
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking features
-bindsym F8 mode "$mode_system"
-set $mode_system (F8)lock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+bindsym F12 mode "$mode_system"
+set $mode_system (F12)lock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
 	#bindsym F8 exec ~/scripts/gambit/lock.sh sleep, mode "default"
     #bindsym s exec --no-startup-id "/home/cyphics/scripts/gambit/lock.sh sleep >  /home/cyphics/tmp.txt" , mode "default"
-    bindsym F8 exec --no-startup-id ~/.config/i3/i3exit suspend, 	 mode "default"
+    bindsym F12 exec --no-startup-id ~/.config/i3/i3exit suspend, 	 mode "default"
     bindsym u  exec --no-startup-id ~/.config/i3/i3exit switch_user, mode "default"
     bindsym e  exec --no-startup-id ~/.config/i3/i3exit logout, 	 mode "default"
     bindsym h  exec --no-startup-id ~/.config/i3/i3exit hibernate, 	 mode "default"
@@ -269,8 +269,8 @@ bindsym $mod+control+t exec "$HOME/scripts/cyphics/i3_open.sh thunderbird"
 bindsym $mod+control+f exec "$HOME/scripts/cyphics/i3_open.sh thunar"
 bindsym $mod+control+i exec "$HOME/scripts/cyphics/i3_open.sh irc"
 bindsym $mod+control+p exec "$HOME/scripts/cyphics/i3_open.sh pavucontrol"
-bindsym --release Print exec "/usr/bin/scrot -s $HOME/ownCloud/Images/Screenshots/'%F_%H-%M-%S_scrot.png'"
-bindsym --release Shift+Print exec "/usr/bin/scrot $HOME/ownCloud/Images/Screenshots/'%F_%H-%M-%S_scrot.png'"
+bindsym --release F8 exec "/usr/bin/scrot -s $HOME/ownCloud/Images/screenshots/'%F_%H-%M-%S_scrot.png'"
+bindsym --release Shift+F8 exec "/usr/bin/scrot $HOME/ownCloud/Images/screenshots/'%F_%H-%M-%S_scrot.png'"
 
 bindsym $mod+p exec "$HOME/ownCloud/sooon/projects/projects_selector.sh"
 bindsym $mod+Shift+t exec "$HOME/scripts/task_selector.sh"
@@ -291,10 +291,10 @@ exec eval $(pgp-agent --daemon)
         exec --no-startup-id /usr/bin/gnome-keyring-daemon
 #exec "xset s off && xset -dpms"
 exec /usr/bin/redshift -O 4000
-exec xrandr --output DP-4 --auto --left-of HDMI-0
+exec xrandr --output DP-4 --auto --right-of HDMI-0
 exec_always --no-startup-id ~/.config/polybar/bar_launcher.sh
 exec $HOME/scripts/cyphics/set_wallpaper
 exec /usr/bin/protonmail-bridge --no-window
 exec /usr/bin/dunst
 #exec "$HOME/scripts/swap_keyboard_layout.sh"
-exec --no-startup-id "sh -c 'sleep 2; xmodmap ~/ownCloud/config/keyboard/standard_us'"
+exec --no-startup-id "sh -c 'sleep 2; xmodmap ~/ownCloud/config/keyboard/standard_us_noswap'"

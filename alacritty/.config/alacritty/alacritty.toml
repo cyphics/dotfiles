@@ -35,3 +35,8 @@ size = 11.0
 family = "JetBrainsMono NF"
 style = "Regular"
 
+# This changes the output of <Ctrl-Shift> to allows its use in other programs like nvim in tmux
+[keyboard]
+  bindings = [
+    { key = "f", mods = "Control | Shift", chars = "\u2660" }
+  ]

@@ -1,10 +1,13 @@
 [user]
-	name = cyphics
-	email = cyphics@protonmail.com
+	name = Thierry Raeber
+	email = raeber@protonmail.com
 [alias]
 	st = status
 	ci = commit
 	co = checkout
+	staash = stash --all
+	bb = !run_script.sh
+	blaame = blame -w -C -C -C
 [push]
 	default = simple
 [color]
@@ -14,8 +17,6 @@
 [core]
 	excludesfile = /home/cyphics/.gitignore_global
 	autocrlf = input
-#[http]
-#	sslCAInfo = /etc/ssl/certs/_.cyphix.org.crt
 [color "status"]
 	changed = red
 [init]
@@ -29,3 +30,17 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+
+# Specify a global config for a certain tree (i.e. e-mail address)
+[includeIf "gitdir: ~/ownCloud/work/"]
+	path = ~/ownCloud/work/.gitconfig
+[includeIf "gitdir: ~/ownCloud/programming/"]
+	path = ~/ownCloud/programming/.gitconfig
+
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[safe]
+	directory = /usr/share/webapps/wordpress
+	directory = /var/www/a-rec
