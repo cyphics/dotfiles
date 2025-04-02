@@ -1,0 +1,15 @@
+]debug/
+]release/
+].venv/
+]CMakeCache.txt
+]CMakeFiles
+].idea/
+]cmake-build-debug/
+]cmake-build-release/
+]build/
+]__pycache__/
+]env/
+]external/
+]build_1/
+]node_modules/
+].node_modules/
