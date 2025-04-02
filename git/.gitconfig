@@ -44,3 +44,5 @@
 [safe]
 	directory = /usr/share/webapps/wordpress
 	directory = /var/www/a-rec
+[advice]
+	ignoredHook = false
