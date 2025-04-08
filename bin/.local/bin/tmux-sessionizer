@@ -6,8 +6,8 @@ dir_list_rec=(
 	~/ownCloud/ 
 	~/ownCloud/dotfiles 
 	~/ownCloud/config 
-	~/ownCloud/programming/projects/ 
-	~/ownCloud/programming/courses/ 
+	~/ownCloud/programming/projects
+	~/ownCloud/programming/courses 
 )
 
 #!/usr/bin/env bash
@@ -40,7 +40,7 @@ else
     echo "$dir_list" 
    # dir_list_rec    # places=$(echo $dir_list_rec)
     # echo $places
-    selected=$(echo "${dir_list[@]})" | fzf)
+    selected=$(echo "${dir_list[@]}" | fzf)
 
     fi
 
