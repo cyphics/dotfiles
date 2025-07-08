@@ -33,6 +33,7 @@ size = 11.0
 
 [font.normal]
 family = "JetBrainsMono NF"
+#family = "DejaVuSans"
 style = "Regular"
 
 # This changes the output of <Ctrl-Shift> to allows its use in other programs like nvim in tmux
