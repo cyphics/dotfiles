@@ -69,7 +69,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+q kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
@@ -113,6 +113,19 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Workspaces:
 #
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+    set $ws1 "1"
+    set $ws2 "2"
+    set $ws3 "3"
+    set $ws4 "4"
+    set $ws5 "5"
+    set $ws6 "6"
+    set $ws7 "7"
+    set $ws8 "8"
+    set $ws9 "9"
+    set $ws10 "10"
+
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -174,6 +187,25 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+
+
+set $mode_system (F12)lock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+	#bindsym F8 exec ~/scripts/gambit/lock.sh sleep, mode "default"
+    #bindsym s exec --no-startup-id "/home/cyphics/scripts/gambit/lock.sh sleep >  /home/cyphics/tmp.txt" , mode "default"
+    bindsym F12 exec --no-startup-id ~/.config/i3/i3exit suspend, 	 mode "default"
+    bindsym u  exec --no-startup-id ~/.config/i3/i3exit switch_user,     mode "default"
+    bindsym e  exec --no-startup-id ~/.config/i3/i3exit logout, 	 mode "default"
+    bindsym h  exec --no-startup-id ~/.config/i3/i3exit hibernate, 	 mode "default"
+    bindsym r  exec --no-startup-id ~/.config/i3/i3exit reboot,  	 mode "default"
+
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym F11 mode "$mode_system"
+
 #
 # Resizing containers:
 #
@@ -212,20 +244,9 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+exec waybar
 
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
+exec eval $(gnome-keyring-daemon --start)
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 include /etc/sway/config.d/*
