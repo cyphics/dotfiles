@@ -30,14 +30,27 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
+set $bg    #64727D
+set $bg2  #3F3F3F
+set $white #ffffff
+set $fg    $white
+set $fg1    $white
+
+# class                 border  bground text    indicator child_border
+client.focused          $bg2     $bg     $white  $bg       $bg
+client.focused_inactive $bg2   #5F676A $fg     #484E50   #5F676A
+client.unfocused        $bg2   #282828 #888888 #292D2E   #222222
+client.urgent           #2F343A #CC241D $fg1   #CC241D   #CC241D
+client.placeholder      #1D2021 #0C0C0C $fg      #000000   #0C0C0C
+
 ### Idle configuration
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -177,6 +190,39 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+
+# Open specific applications in floating mode
+#for_window [class="^.*"] border pixel 3
+  for_window [title="alsamixer"] floating enable border pixel 1
+  for_window [class="Calamares"] floating enable border normal
+  for_window [class="Clipgrab"] floating enable
+  for_window [title="File Transfer*"] floating enable
+  for_window [title="Android Emulator*"] floating enable
+  for_window [class="Galculator"] floating enable border pixel 1
+  for_window [class="GParted"] floating enable border normal
+  for_window [title="i3_help"] floating enable sticky enable border normal
+  for_window [class="Lightdm-gtk-greeter-settings"] floating enable
+  for_window [class="Lxappearance"] floating enable sticky enable border normal
+  for_window [class="Manjaro-hello"] floating enable
+  for_window [class="Nitrogen"] floating enable sticky enable border normal
+  for_window [class="Oblogout"] fullscreen enable
+  for_window [class="octopi"] floating enable
+  for_window [title="About Pale Moon"] floating enable
+  for_window [class="Pamac-manager"] floating enable
+  for_window [class="Pavucontrol"] floating enable
+  for_window [class="qt5ct"] floating enable sticky enable border normal
+  for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+  for_window [class="Simple-scan"] floating enable border normal
+  for_window [class="(?i)System-config-printer.py"] floating enable border normal
+  for_window [class="Thus"] floating enable border normal
+  for_window [class="Timeset-gui"] floating enable border normal
+  for_window [class="(?i)virtualbox"] floating enable border normal
+  for_window [class="Xfburn"] floating enable
+  for_window [class="InputOutput"] floating enable
+  for_window [title="LearnOpenGL"] floating enable
+  for_window [title="swaysettings"] floating enable
+
 #
 # Scratchpad:
 #
@@ -246,6 +292,7 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
+bindsym $mod+control+f      exec thunar
 exec waybar
 
 exec eval $(gnome-keyring-daemon --start)
