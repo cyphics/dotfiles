@@ -139,6 +139,7 @@ alias hist='history | grep'
 alias mv='mv -i'
 alias cp='cp -i'
 alias ln='ln -i'
+alias tt=taskwarrior-tui
 
 #SSH
 alias mgn='ssh magneto-cyphics'
@@ -167,3 +168,4 @@ export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
 
 # Handmade hero
 export PATH="$PATH:/home/cyphics/handmade/ctime"
+eval "$(uv generate-shell-completion zsh)"
