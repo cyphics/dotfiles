@@ -125,6 +125,12 @@ exec swayidle -w \
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
+
+# Move workspace to output
+bindsym $mod+Control+$right move workspace to output right
+bindsym $mod+Control+$left move workspace to output left
+
 #
 # Workspaces:
 #
@@ -290,6 +296,7 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
+    bindsym --locked XF86Display exec wdisplays
     bindsym Print exec grim
 
 bindsym $mod+control+f      exec thunar
@@ -297,5 +304,6 @@ exec waybar
 
 exec eval $(gnome-keyring-daemon --start)
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec /usr/bin/protonmail-bridge --no-window
 
 include /etc/sway/config.d/*
