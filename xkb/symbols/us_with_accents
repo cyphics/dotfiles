@@ -13,7 +13,7 @@ xkb_symbols "accentuated" {
     key <AE10> { [ 0, parenright, degree ] };
     key <AE06> { [ 6, asciicircum, dead_circumflex ] };
     key <AC11> { [ apostrophe, quotedbl, dead_diaeresis ] };
-    key <AB09> { [ period, periodcentered ] };
+    // key <AB09> { [ period, periodcentered ] }; TODO add > char between period and periodcentered
 
 };
 
