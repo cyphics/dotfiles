@@ -4,10 +4,12 @@ dir_list_rec=(
   ~/.config/
   ~/dotfiles/
   ~/work/
+  ~/apps/
   ~/ownCloud/
   ~/ownCloud/config
   ~/ownCloud/programming/projects
   ~/ownCloud/programming/courses
+  ~/qmk_firmware/keyboards/planck/rev7/keymaps/
 )
 
 #!/usr/bin/env bash
