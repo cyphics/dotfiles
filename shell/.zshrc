@@ -127,6 +127,8 @@ export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
 export PATH="$PATH:$HOME/ownCloud/work/scripts/"
 
+export MOZ_ENABLE_WAYLAND=1
+
 # aliases
 alias rm='rm -I --preserve-root'
 alias vim='nvim'
