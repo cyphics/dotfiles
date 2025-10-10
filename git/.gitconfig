@@ -46,3 +46,5 @@
 	directory = /var/www/a-rec
 [advice]
 	ignoredHook = false
+[pager]
+	branch = false

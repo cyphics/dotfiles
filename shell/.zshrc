@@ -127,6 +127,8 @@ export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
 export PATH="$PATH:$HOME/ownCloud/work/scripts/"
 
+export MOZ_ENABLE_WAYLAND=1
+
 # aliases
 alias rm='rm -I --preserve-root'
 alias vim='nvim'
@@ -139,6 +141,7 @@ alias hist='history | grep'
 alias mv='mv -i'
 alias cp='cp -i'
 alias ln='ln -i'
+alias tt=taskwarrior-tui
 
 #SSH
 alias mgn='ssh magneto-cyphics'
@@ -167,3 +170,4 @@ export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
 
 # Handmade hero
 export PATH="$PATH:/home/cyphics/handmade/ctime"
+eval "$(uv generate-shell-completion zsh)"

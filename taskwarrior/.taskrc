@@ -16,17 +16,21 @@
 
 # Files
 data.location=~/ownCloud/task
-#hooks.location=~/.config/task/hooks
+hooks.location=~/ownCloud/task/hooks
 
 # Color theme (uncomment one to use)
 include ~/ownCloud/config/task/dark-gray-256.theme
 
-news.version=2.6.0
+news.version=3.4.1
+urgency.user.tag.critical.coefficient=15
 urgency.user.tag.bug.coefficient=10
 urgency.user.tag.work.coefficient=5
-urgency.user.tag.critical.coefficient=15
+urgency.user.tag.problem.coefficient=4.5
 urgency.user.tag.improve.coefficient=-3
+urgency.user.tag.later.coefficient=-6.0
+urgency.user.tag.hold.coefficient=-6.0
 urgency.uda.priority.L.coefficient=-3
 uda.priority.values=H,M,,L
 urgency.user.tag.rice.coefficient=-2
+urgency.blocking.coefficient=2
 nag=
