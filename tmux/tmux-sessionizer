@@ -5,10 +5,10 @@ dir_list_rec=(
   ~/dotfiles/
   ~/work/
   ~/apps/
-  ~/ownCloud/
-  ~/ownCloud/config
-  ~/ownCloud/programming/projects
-  ~/ownCloud/programming/courses
+  ~/cloud/
+  ~/cloud/config
+  ~/cloud/programming/projects
+  ~/cloud/programming/courses
   ~/qmk_firmware/keyboards/planck/rev7/keymaps/
 )
 
