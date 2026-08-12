@@ -1,4 +1,4 @@
-Set-PSReadLineOption -EditMode Emacs
+
 
 Remove-Item alias:ls -ErrorAction SilentlyContinue
 function ls { eza --icons --git $args }
@@ -9,6 +9,7 @@ function y { yazi }
 Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 
+Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 
@@ -161,7 +162,6 @@ Microsoft.PowerShell.Utility\Set-Alias -Name zi -Value __zoxide_zi -Option AllSc
 # To initialize zoxide, add this to your configuration (find it by running
 # `echo $profile` in PowerShell):
 #
-# Invoke-Expression (& { (zoxide init powershell | Out-String) })
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 Invoke-Expression (&starship init powershell)
-
