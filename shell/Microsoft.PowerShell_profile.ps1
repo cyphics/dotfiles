@@ -5,10 +5,11 @@ function l { eza -l --icons --git $args }
 function vim { nvim $args }
 function y { yazi }
 
+Set-PSReadLineOption -EditMode Emacs
+
 Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 
-Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 
