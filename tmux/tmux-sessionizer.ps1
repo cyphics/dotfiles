@@ -8,6 +8,7 @@ $dirList = @(
     "$env:USERPROFILE\work",
     "$env:USERPROFILE\apps",
     "$env:USERPROFILE\cloud",
+    "$env:USERPROFILE\cloud\work",
     "$env:USERPROFILE\cloud\config",
     "$env:USERPROFILE\cloud\dotfiles",
     "$env:USERPROFILE\cloud\programming\projects",
