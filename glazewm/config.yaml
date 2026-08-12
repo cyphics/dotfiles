@@ -258,6 +258,16 @@ keybindings:
   - commands: ['move --workspace 10', 'focus --workspace 10']
     bindings: ['alt+shift+0']
 
+  # Move workspaces to monitor
+  - commands: ["move-workspace --direction left"]
+    bindings: ["ctrl+alt+h"]
+  - commands: ["move-workspace --direction right"]
+    bindings: ["ctrl+alt+l"]
+  # - commands: ["move-workspace --direction up"]
+  #   bindings: ["alt+shift+d"]
+  # - commands: ["move-workspace --direction down"]
+  #   bindings: ["alt+shift+s"]
+
   # Splits (équivalent $mod+b / $mod+v)
   - commands: ['toggle-tiling-direction']
     bindings: ['alt+b', 'alt+v']
